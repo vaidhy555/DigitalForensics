@@ -11,7 +11,8 @@ namespace Automatic_Parser
         internal string filePath {get;set;}
         internal string selectedItem { get; set; }
 
-        private const string MBR = "Master Boot Record";
+        private const string MBR = "Master Boot Record - Entire file";
+        private const string MBRPartition = "Master Boot Record - Partition Entries";
         private const string VBR = "Volume Boot Record";
 
         
@@ -69,7 +70,14 @@ namespace Automatic_Parser
                 switch(selectedItem)
                 {
                     case MBR:
-                        dataGridView1.DataSource = MasterBootRecord.parseMBR(filePath);
+                        dataGridView1.DataSource = MasterBootRecord.parseMBR(filePath, false);
+                        dataGridView1.Visible = true;
+                        button3.Visible = true;
+                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        break;
+
+                    case MBRPartition:
+                        dataGridView1.DataSource = MasterBootRecord.parseMBR(filePath, true);
                         dataGridView1.Visible = true;
                         button3.Visible = true;
                         dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

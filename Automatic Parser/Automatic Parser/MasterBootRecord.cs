@@ -9,7 +9,7 @@ namespace Automatic_Parser
     public class MasterBootRecord
     {
         //Logic to parse MBR
-        public static DataTable parseMBR(string path)
+        public static DataTable parseMBR(string path, bool isPartitionEntry)
         {
             string[] hex = null;
                   
@@ -17,17 +17,28 @@ namespace Automatic_Parser
             {
                 using (BinaryReader br = new BinaryReader(fs))
                 {
-                  hex = BitConverter.ToString(br.ReadBytes((int)fs.Length)).Split('-');
+                  hex = BitConverter.ToString(br.ReadBytes((int)fs.Length)).Split('-');                  
                 }
             }
 
             List<MBRParameters> mbrParams = new List<MBRParameters>();
 
             List<string[]> partitions = new List<string[]>();
-            partitions.Add(hex.Skip(446).Take(16).ToArray());
-            partitions.Add(hex.Skip(462).Take(16).ToArray());
-            partitions.Add(hex.Skip(478).Take(16).ToArray());
-            partitions.Add(hex.Skip(494).Take(16).ToArray());
+
+            if (isPartitionEntry)
+            {
+                partitions.Add(hex.Take(16).ToArray());
+                partitions.Add(hex.Skip(16).Take(16).ToArray());
+                partitions.Add(hex.Skip(32).Take(16).ToArray());
+                partitions.Add(hex.Skip(48).Take(16).ToArray());
+            }
+            else
+            {
+                partitions.Add(hex.Skip(446).Take(16).ToArray());
+                partitions.Add(hex.Skip(462).Take(16).ToArray());
+                partitions.Add(hex.Skip(478).Take(16).ToArray());
+                partitions.Add(hex.Skip(494).Take(16).ToArray());
+            }
 
             foreach (var partition in partitions)
             {
