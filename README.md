@@ -7,4 +7,4 @@ The data table displays the MBR vlaues that are parsed from the uploaded file.
 
 The results can be exported to excel sheet.
 
-**Extract MBR data; do not copy paste data in a text file and upload.**
+**Extract MBR data; do not copy paste hex data in a text file and upload.**
