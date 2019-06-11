@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -10,6 +11,27 @@ namespace Automatic_Parser
 {
     public class Utility
     {
+
+        public static string[] ReadBinaryFile(string path)
+        {
+            string[] hex = null;
+
+            using (FileStream fs = File.OpenRead(path))
+            {
+                using (BinaryReader br = new BinaryReader(fs))
+                {
+                    hex = BitConverter.ToString(br.ReadBytes((int)fs.Length)).Split('-');
+                }
+            }
+
+            return hex;
+        }
+
+        public static byte[] StringToByteArray(string hex)
+        {
+            return Enumerable.Range(0, hex.Length / 2).Select(x => Convert.ToByte(hex.Substring(x * 2, 2), 16)).ToArray();
+        }
+
         public static void ExportToExcel(DataGridView dGV, string filename)
         {
             string stOutput = "";

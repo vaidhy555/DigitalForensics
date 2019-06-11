@@ -8,14 +8,16 @@ namespace Automatic_Parser
 {
     public partial class Form1 : Form
     {
-        internal string filePath {get;set;}
+        internal string filePath { get; set; }
         internal string selectedItem { get; set; }
 
         private const string MBR = "Master Boot Record - Entire file";
         private const string MBRPartition = "Master Boot Record - Partition Entries";
         private const string VBR = "Volume Boot Record";
+        private const string Directory = "Directory Table Entries - FAT";
 
-        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -67,27 +69,44 @@ namespace Automatic_Parser
             {
                 selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
 
-                switch(selectedItem)
+                switch (selectedItem)
                 {
                     case MBR:
-                        dataGridView1.DataSource = MasterBootRecord.parseMBR(filePath, false);
-                        dataGridView1.Visible = true;
-                        button3.Visible = true;
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        dataGridView1.DataSource = MasterBootRecord.ParseMBR(filePath, false);
+                        if (dataGridView1.DataSource != null)
+                        {
+                            dataGridView1.Visible = true;
+                            button3.Visible = true;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
                         break;
 
                     case MBRPartition:
-                        dataGridView1.DataSource = MasterBootRecord.parseMBR(filePath, true);
-                        dataGridView1.Visible = true;
-                        button3.Visible = true;
-                        dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        dataGridView1.DataSource = MasterBootRecord.ParseMBR(filePath, true);
+                        if (dataGridView1.DataSource != null)
+                        {
+                            dataGridView1.Visible = true;
+                            button3.Visible = true;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
                         break;
 
                     case VBR: break;
 
-                    default: break;                                         
+                    case Directory:
+                        dataGridView1.DataSource = DirectoryEntry.ParseDirectoryEntry(filePath);
+                        if (dataGridView1.DataSource != null)
+                        {
+                            dataGridView1.Visible = true;
+                            button3.Visible = true;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                        break;
+
+
+                    default: break;
                 }
-            }                   
+            }
         }
 
         //Export values in data grid to excel
@@ -98,10 +117,10 @@ namespace Automatic_Parser
             sfd.FileName = selectedItem + ".xls";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-               Utility.ExportToExcel(dataGridView1, sfd.FileName); // Here dataGridview1 is your grid view name
-               string message = "Export Successful";
-               string title = "Success";
-               MessageBox.Show(message, title);
+                Utility.ExportToExcel(dataGridView1, sfd.FileName); // Here dataGridview1 is your grid view name
+                string message = "Export Successful";
+                string title = "Success";
+                MessageBox.Show(message, title);
             }
         }
     }

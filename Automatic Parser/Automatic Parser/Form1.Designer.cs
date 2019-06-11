@@ -64,7 +64,7 @@ namespace Automatic_Parser
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Master Boot Record - Entire file","Master Boot Record - Partition Entries",
-            "Volume Boot Record"});
+            "Volume Boot Record", "Directory Table Entries - FAT"});
             this.comboBox1.Location = new System.Drawing.Point(41, 75);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(285, 24);
