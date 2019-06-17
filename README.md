@@ -1,7 +1,7 @@
 # DigitalForensics
 **To parse MBR**
 Select the binary file to be parsed using 'Browse Button'.
-Select the value from drop down list; NOTE: Only Master Boot Record is supported for now.
+Select the value from drop down list;
 Click Parse.
 The data table displays the MBR vlaues that are parsed from the uploaded file.
 
