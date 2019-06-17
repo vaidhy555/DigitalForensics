@@ -1,4 +1,4 @@
-# DigitalForensics
+# Windows Forensic Parser
 **To parse MBR**
 Select the binary file to be parsed using 'Browse Button'.
 Select the value from drop down list;
