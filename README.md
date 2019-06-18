@@ -1,4 +1,7 @@
 # Windows Forensic Parser
+
+***To Install the application***, click the mentioned link https://github.com/vaidhy555/DigitalForensics/releases/download/v1.1/Windows.Forensic.Parser.Setup.rar. Extract the file and run setup.exe file to install the application.
+
 **To parse MBR**
 Select the binary file to be parsed using 'Browse Button'.
 Select the value *'Master Boot Record - Entire file' or 'Master Boot Record - Partition Entries'* from drop down list;
