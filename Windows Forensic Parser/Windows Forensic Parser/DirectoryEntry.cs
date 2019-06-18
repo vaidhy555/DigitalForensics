@@ -45,23 +45,23 @@ namespace Automatic_Parser
                     {
                         switch (entry[11])
                         {
-                            case "01": directoryEntryObj.AttributeFlag = "Read Only"; break;
-                            case "02": directoryEntryObj.AttributeFlag = "Hidden File"; break;
-                            case "04": directoryEntryObj.AttributeFlag = "System File"; break;
-                            case "08": directoryEntryObj.AttributeFlag = "Volume label"; break;
-                            case "0F": directoryEntryObj.AttributeFlag = "Long File Name"; break;
-                            case "10": directoryEntryObj.AttributeFlag = "Directory"; break;
-                            case "20": directoryEntryObj.AttributeFlag = "Archive"; break;
-                            default: directoryEntryObj.AttributeFlag = entry[11] + " ;Unknown"; break;
+                            case "01": directoryEntryObj.Attribute_Flag = "Read Only"; break;
+                            case "02": directoryEntryObj.Attribute_Flag = "Hidden File"; break;
+                            case "04": directoryEntryObj.Attribute_Flag = "System File"; break;
+                            case "08": directoryEntryObj.Attribute_Flag = "Volume label"; break;
+                            case "0F": directoryEntryObj.Attribute_Flag = "Long File Name"; break;
+                            case "10": directoryEntryObj.Attribute_Flag = "Directory"; break;
+                            case "20": directoryEntryObj.Attribute_Flag = "Archive"; break;
+                            default: directoryEntryObj.Attribute_Flag = entry[11] + " ;Unknown"; break;
                         }
 
-                        directoryEntryObj.FileName = System.Text.Encoding.ASCII.GetString(Utility.StringToByteArray(String.Join("", entry.Take(8))));
-                        directoryEntryObj.FileExtension = System.Text.Encoding.ASCII.GetString(Utility.StringToByteArray(String.Join("", entry.Skip(8).Take(3))));
-                        directoryEntryObj.CreationTimeinHEX = String.Join("", entry.Skip(14).Take(4));
-                        directoryEntryObj.LastAccessedDateinHEX = String.Join("", entry.Skip(18).Take(2));
-                        directoryEntryObj.LastWrittenTimeinHEX = String.Join("", entry.Skip(22).Take(4));
-                        directoryEntryObj.StartingCluster = int.Parse(string.Concat(entry[21] + entry[20] + entry[27] + entry[26]), System.Globalization.NumberStyles.HexNumber);
-                        directoryEntryObj.SizeinBytes = int.Parse(string.Concat(entry[31] + entry[30] + entry[29] + entry[28]), System.Globalization.NumberStyles.HexNumber);
+                        directoryEntryObj.File_Name = Encoding.ASCII.GetString(Utility.StringToByteArray(string.Join("", entry.Take(8))));
+                        directoryEntryObj.File_Extension = Encoding.ASCII.GetString(Utility.StringToByteArray(string.Join("", entry.Skip(8).Take(3))));
+                        directoryEntryObj.Creation_Time_in_HEX = string.Join("", entry.Skip(14).Take(4));
+                        directoryEntryObj.Last_Accessed_Date_in_HEX = string.Join("", entry.Skip(18).Take(2));
+                        directoryEntryObj.Last_Written_Time_in_HEX = string.Join("", entry.Skip(22).Take(4));
+                        directoryEntryObj.Starting_Cluster = int.Parse(string.Concat(entry[21] + entry[20] + entry[27] + entry[26]), NumberStyles.HexNumber);
+                        directoryEntryObj.Size_in_Bytes = int.Parse(string.Concat(entry[31] + entry[30] + entry[29] + entry[28]), NumberStyles.HexNumber);
                         fileDetails.Add(directoryEntryObj);
                     }
                 });
