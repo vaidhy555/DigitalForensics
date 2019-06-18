@@ -142,7 +142,7 @@ namespace Automatic_Parser
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Windows Forensic Parser v1.0";
+            this.Text = "Windows Forensic Parser v1.1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
