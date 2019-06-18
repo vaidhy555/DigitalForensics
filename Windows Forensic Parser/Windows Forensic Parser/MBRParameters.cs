@@ -8,13 +8,13 @@ namespace Automatic_Parser
 {
     public class MBRParameters
     {
-        public string BootIndicator { get; set; }
-        public string StartingCHS { get; set; }
-        public string PartitionType { get; set; }
-        public string EndingCHS { get; set; }
-        public long StartingSector { get; set; }
-        public long EndingSector { get; set; }
-        public long PartitionSize { get; set; }
+        public string Boot_Indicator { get; set; }
+        public string Starting_CHS { get; set; }
+        public string Partition_Type { get; set; }
+        public string Ending_CHS { get; set; }
+        public long Starting_Sector { get; set; }
+        public long Ending_Sector { get; set; }
+        public long Partition_Size { get; set; }
 
     }
 }

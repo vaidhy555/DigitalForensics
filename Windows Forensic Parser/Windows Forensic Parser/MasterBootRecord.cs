@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Automatic_Parser
 {
@@ -42,48 +43,48 @@ namespace Automatic_Parser
 
                         if (partition[0] == "00")
                         {
-                            mbrObj.BootIndicator = "Non bootable";
+                            mbrObj.Boot_Indicator = "Non bootable";
                         }
                         else
                         {
-                            mbrObj.BootIndicator = "Bootable";
+                            mbrObj.Boot_Indicator = "Bootable";
                         }
 
-                        mbrObj.StartingCHS = string.Concat(partition[1], partition[2], partition[3]);
+                        mbrObj.Starting_CHS = string.Concat(partition[1], partition[2], partition[3]);
 
                         switch (partition[4])
                         {
-                            case "01": mbrObj.PartitionType = "FAT 12"; break;
+                            case "01": mbrObj.Partition_Type = "FAT 12"; break;
                             case "04":
-                            case "86": mbrObj.PartitionType = "FAT 16"; break;
+                            case "86": mbrObj.Partition_Type = "FAT 16"; break;
                             case "05":
-                            case "0F": mbrObj.PartitionType = "Extended Partition"; break;
+                            case "0F": mbrObj.Partition_Type = "Extended Partition"; break;
                             case "07":
-                            case "87": mbrObj.PartitionType = "NTFS"; break;
+                            case "87": mbrObj.Partition_Type = "NTFS"; break;
                             case "0B":
                             case "0C":
                             case "8B":
-                            case "8C": mbrObj.PartitionType = "FAT 32"; break;
-                            case "12": mbrObj.PartitionType = "EISA"; break;
-                            case "42": mbrObj.PartitionType = "Dynamic disk volume"; break;
+                            case "8C": mbrObj.Partition_Type = "FAT 32"; break;
+                            case "12": mbrObj.Partition_Type = "EISA"; break;
+                            case "42": mbrObj.Partition_Type = "Dynamic disk volume"; break;
                             case "06":
-                            case "0E": mbrObj.PartitionType = "BIGDOS FAT 16"; break;
-                            default: mbrObj.PartitionType = partition[4] + "; type unknown"; break;
+                            case "0E": mbrObj.Partition_Type = "BIGDOS FAT 16"; break;
+                            default: mbrObj.Partition_Type = partition[4] + "; type unknown"; break;
                         }
 
-                        mbrObj.EndingCHS = string.Concat(partition[5], partition[6], partition[7]);
+                        mbrObj.Ending_CHS = string.Concat(partition[5], partition[6], partition[7]);
 
-                        mbrObj.StartingSector = int.Parse(string.Concat(partition[11], partition[10], partition[9], partition[8]), System.Globalization.NumberStyles.HexNumber);
+                        mbrObj.Starting_Sector = int.Parse(string.Concat(partition[11], partition[10], partition[9], partition[8]), NumberStyles.HexNumber);
 
-                        mbrObj.PartitionSize = int.Parse(string.Concat(partition[15], partition[14], partition[13], partition[12]), System.Globalization.NumberStyles.HexNumber);
+                        mbrObj.Partition_Size = int.Parse(string.Concat(partition[15], partition[14], partition[13], partition[12]), NumberStyles.HexNumber);
 
-                        if (mbrObj.PartitionSize == 0)
+                        if (mbrObj.Partition_Size == 0)
                         {
-                            mbrObj.EndingSector = 0;
+                            mbrObj.Ending_Sector = 0;
                         }
                         else
                         {
-                            mbrObj.EndingSector = mbrObj.PartitionSize + mbrObj.StartingSector - 1;
+                            mbrObj.Ending_Sector = mbrObj.Partition_Size + mbrObj.Starting_Sector - 1;
                         }
 
                         mbrParams.Add(mbrObj);

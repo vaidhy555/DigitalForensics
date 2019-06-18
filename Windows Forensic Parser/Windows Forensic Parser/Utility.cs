@@ -68,7 +68,7 @@ namespace Automatic_Parser
             foreach (PropertyInfo prop in Props)
             {
                 //Setting column names as Property names  
-                dataTable.Columns.Add(prop.Name);
+                dataTable.Columns.Add(prop.Name.Replace("_"," "));
             }
             foreach (T item in items)
             {
@@ -80,6 +80,22 @@ namespace Automatic_Parser
                 }
                 dataTable.Rows.Add(values);
             }
+
+            return dataTable;
+        }
+
+        public static DataTable ToDataTableDictionary<T>(T item)
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+            //Get all the properties by using reflection   
+            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            dataTable.Columns.Add("Field Name");
+            dataTable.Columns.Add("Value");
+
+            foreach (var prop in Props)
+            {
+                dataTable.Rows.Add(new object[] { prop.Name.Replace("_", " "), prop.GetValue(item) });
+            }           
 
             return dataTable;
         }

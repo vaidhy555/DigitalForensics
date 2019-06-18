@@ -13,11 +13,10 @@ namespace Automatic_Parser
 
         private const string MBR = "Master Boot Record - Entire file";
         private const string MBRPartition = "Master Boot Record - Partition Entries";
-        private const string VBR = "Volume Boot Record";
+        private const string VBR12 = "Volume Boot Record - FAT12/FAT16";
+        private const string VBR32 = "Volume Boot Record - FAT32";
         private const string Directory = "Directory Table Entries - FAT";
-
-
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -67,7 +66,7 @@ namespace Automatic_Parser
             }
             else
             {
-                selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+                selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();                              
 
                 switch (selectedItem)
                 {
@@ -91,7 +90,25 @@ namespace Automatic_Parser
                         }
                         break;
 
-                    case VBR: break;
+                    case VBR12:
+                        dataGridView1.DataSource = VolumeBootRecord.ParseVBRFat12Fat16(filePath);
+                        if (dataGridView1.DataSource != null)
+                        {
+                            dataGridView1.Visible = true;
+                            button3.Visible = true;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                        break;
+
+                    case VBR32:
+                        dataGridView1.DataSource = VolumeBootRecord.ParseVBRFat32(filePath);
+                        if (dataGridView1.DataSource != null)
+                        {
+                            dataGridView1.Visible = true;
+                            button3.Visible = true;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                        break;
 
                     case Directory:
                         dataGridView1.DataSource = DirectoryEntry.ParseDirectoryEntry(filePath);
