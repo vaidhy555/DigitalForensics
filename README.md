@@ -1,6 +1,6 @@
 # Windows Forensic Parser
 
-***To Install the application***, click the mentioned link https://github.com/vaidhy555/DigitalForensics/releases/download/v1.1/Windows.Forensic.Parser.Setup.rar. Extract the file and run setup.exe file to install the application.
+***Use the link https://github.com/vaidhy555/DigitalForensics/releases/download/v1.1/Windows.Forensic.Parser.Setup.rar to download the required files for the application***. Extract Windows.Forensic.Parser.Setup.rar and run setup.exe file to install the application.
 
 **To parse MBR**
 Select the binary file to be parsed using 'Browse Button'.
