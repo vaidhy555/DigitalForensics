@@ -73,6 +73,7 @@ namespace Automatic_Parser
             "Master Boot Record - Partition Entries",
             "Volume Boot Record - FAT12/FAT16",
             "Volume Boot Record - FAT32",
+            "Volume Boot Record - NTFS",
             "Directory Table Entries - FAT"});
             this.comboBox1.Location = new System.Drawing.Point(41, 75);
             this.comboBox1.Name = "comboBox1";
@@ -142,7 +143,7 @@ namespace Automatic_Parser
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Windows Forensic Parser v1.1";
+            this.Text = "Windows Forensic Parser v1.2";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
