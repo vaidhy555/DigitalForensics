@@ -15,6 +15,7 @@ namespace Automatic_Parser
         private const string MBRPartition = "Master Boot Record - Partition Entries";
         private const string VBR12 = "Volume Boot Record - FAT12/FAT16";
         private const string VBR32 = "Volume Boot Record - FAT32";
+        private const string VBRNtfs = "Volume Boot Record - NTFS";
         private const string Directory = "Directory Table Entries - FAT";
         
         public Form1()
@@ -102,6 +103,16 @@ namespace Automatic_Parser
 
                     case VBR32:
                         dataGridView1.DataSource = VolumeBootRecord.ParseVBRFat32(filePath);
+                        if (dataGridView1.DataSource != null)
+                        {
+                            dataGridView1.Visible = true;
+                            button3.Visible = true;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                        break;
+
+                    case VBRNtfs:
+                        dataGridView1.DataSource = VolumeBootRecordNTFS.ParseVBRNTFS(filePath);
                         if (dataGridView1.DataSource != null)
                         {
                             dataGridView1.Visible = true;
