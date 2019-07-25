@@ -33,6 +33,6 @@ Select the binary file to be parsed using 'Browse Button'.
 Select the value *'Master File Table'*  from drop down list; 
 Click Parse.
 
-![image](https://user-images.githubusercontent.com/51472552/61853927-9e183180-aeda-11e9-9599-eef96dd7a6af.png)
+![image](https://user-images.githubusercontent.com/51472552/61854019-df104600-aeda-11e9-9c32-ad476416f7ee.png)
 
 The results can be exported to excel sheet.
