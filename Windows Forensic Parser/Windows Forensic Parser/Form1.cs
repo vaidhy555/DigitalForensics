@@ -17,7 +17,9 @@ namespace Automatic_Parser
         private const string VBR32 = "Volume Boot Record - FAT32";
         private const string VBRNtfs = "Volume Boot Record - NTFS";
         private const string Directory = "Directory Table Entries - FAT";
-        
+        private const string MFT = "Master File Table";
+
+
         public Form1()
         {
             InitializeComponent();
@@ -123,6 +125,16 @@ namespace Automatic_Parser
 
                     case Directory:
                         dataGridView1.DataSource = DirectoryEntry.ParseDirectoryEntry(filePath);
+                        if (dataGridView1.DataSource != null)
+                        {
+                            dataGridView1.Visible = true;
+                            button3.Visible = true;
+                            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        }
+                        break;
+
+                    case MFT:                                              
+                        dataGridView1.DataSource = MasterFileTable.ParseMFT(filePath);
                         if (dataGridView1.DataSource != null)
                         {
                             dataGridView1.Visible = true;
