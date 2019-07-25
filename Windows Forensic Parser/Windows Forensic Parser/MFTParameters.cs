@@ -40,8 +40,7 @@ namespace Automatic_Parser
         public int Offset_to_Runlist { get; set; }
         public long Allocated_Size_of_Content { get; set; }
         public long Actual_Size_of_Content { get; set; }
-        public long Initialised_Size_of_Content { get; set; }
-        public string Cluster_Details { get; set; }
+        public long Initialised_Size_of_Content { get; set; }        
     }
 
     public class MFTAttributeHeaderEntries
