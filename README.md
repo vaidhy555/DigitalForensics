@@ -1,6 +1,6 @@
 # Windows Forensic Parser
 
-***Use the link https://github.com/vaidhy555/DigitalForensics/releases/download/v1.2/Windows.Forensic.Parser.Setup.rar to download the required files for the application***. Extract *'Windows.Forensic.Parser.Setup.rar'* and run setup.exe file to install the application.
+***Use the link https://github.com/vaidhy555/DigitalForensics/releases/download/v1.3/Windows.Forensic.Parser.Setup.rar to download the required files for the application***. Extract *'Windows.Forensic.Parser.Setup.rar'* and run setup.exe file to install the application.
 
 **To parse MBR**
 Select the binary file to be parsed using 'Browse Button'.
@@ -28,13 +28,11 @@ Click Parse.
 
 ![image](https://user-images.githubusercontent.com/51472552/59792045-f747e080-92f0-11e9-8c16-39545546ce1f.png)
 
-The results can be exported to excel sheet.
-
-**To parse Volume Boot Record for NTFS file systems**
+**To parse Master File Table for NTFS file systems**
 Select the binary file to be parsed using 'Browse Button'.
-Select the value *'Volume Boot Record - NTFS'*  from drop down list; 
+Select the value *'Master File Table'*  from drop down list; 
 Click Parse.
 
-![image](https://user-images.githubusercontent.com/51472552/59792087-0cbd0a80-92f1-11e9-8e76-74d6ae5242e8.png)
+![image](https://user-images.githubusercontent.com/51472552/61853927-9e183180-aeda-11e9-9599-eef96dd7a6af.png)
 
 The results can be exported to excel sheet.
